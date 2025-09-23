@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/src/output.css">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> <!-- Include ApexCharts -->
+</head>
+<body>
+    <div class="w-full h-full bg-gray-100">
+        <div class="flex flex-row items-center justify-evenly pt-5 mx-6 gap-8 relative">
+            <!-- Sales Cards -->
+            <div>
+                <div class="group w-64 h-36 border border-gray-300 bg-white rounded-md relative hover:scale-110 transition-transform duration-300">
+                    <div class="grid grid-cols-2 items-center">
+                        <div class="col-span-1 p-4">
+                            <div class="rounded-full border border-gray-300 p-2 w-fit group-hover:bg-gradient-to-t from-stone-600 to-gray-700 transition-all ease-in duration-200">
+                                <svg class="text-indigo-700 w-8 font-bold group-hover:text-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col mt-2">
+                                <span class="text-3xl">6543</span>
+                                <span class="text-gray-500">Item sales</span>
+                            </div>
+                        </div>
+                        <div class="col-span-1 text-center p-4">
+                            <span class="text-gray-500">Sales Status</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer bg-white p-1 mx-4 border border-t-0 rounded-b-md"></div>
+            </div>
+            <div>
+                <div class="group w-64 h-36 border border-gray-300 bg-white rounded-md relative hover:scale-110 transition-transform duration-300">
+                    <div class="grid grid-cols-2 items-center">
+                        <div class="col-span-1 p-4">
+                            <div class="rounded-full border border-gray-300 p-2 w-fit group-hover:bg-gradient-to-t from-stone-600 to-gray-700 transition-all ease-in duration-200">
+                        
+                                <svg class="text-yellow-500 w-8 font-bold group-hover:text-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+                                </svg>
+                                
+                            </div>
+                            <div class="flex flex-col mt-2">
+                                <span class="text-3xl">6543</span>
+                                <span class="text-gray-500">Item sales</span>
+                            </div>
+                        </div>
+                        <div class="col-span-1 text-center p-4">
+                            <span class="text-gray-500">Sales Status</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer bg-white p-1 mx-4 border border-t-0 rounded-b-md"></div>
+            </div>
+            <div>
+                <div class="group w-64 h-36 border border-gray-300 bg-white rounded-md relative hover:scale-110 transition-transform duration-300">
+                    <div class="grid grid-cols-2 items-center">
+                        <div class="col-span-1 p-4">
+                            <div class="rounded-full border border-gray-300 p-2 w-fit group-hover:bg-gradient-to-t from-stone-600 to-gray-700 transition-all ease-in duration-200">
+
+                                <svg class="text-red-500 w-8 font-bold group-hover:text-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
+                                </svg>
+                                
+                            </div>
+                            <div class="flex flex-col mt-2">
+                                <span class="text-3xl">6543</span>
+                                <span class="text-gray-500">Item sales</span>
+                            </div>
+                        </div>
+                        <div class="col-span-1 text-center p-4">
+                            <span class="text-gray-500">Sales Status</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer bg-white p-1 mx-4 border border-t-0 rounded-b-md"></div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4 mx-16 mt-5">
+            <div class="col-span-2 card shadow-md text-white ">
+                <div class="card-body flex flex-row bg-teal-400 border-teal-400 w-full h-full">
+                    <!-- image -->
+                    <div class="img-wrapper w-40 h-40 flex justify-center items-center">
+                        <img src="/uploads/Movies/happy.svg" alt="img title">
+                    </div>
+                    <!-- info -->
+                    <div class="py-2 ml-10">
+                        <h1 class="h6">Good Job, Mohamed!</h1>
+                        <p class="text-white text-xs">You've finished all of your tasks for this week.</p>
+                        <ul class="mt-4">
+                            <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Finish Dashboard Design</li>
+                            <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Fix Issue #74</li>
+                            <li class="text-sm font-light"><i class="fad fa-check-double mr-2"></i> Publish version 1.0.6</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col col-span-2">
+                <!-- alert -->
+                <div class=" bg-gray-600 text-slate-300 p-3">
+                    Hi! Wait A Minute . . . . . . Follow Me On Twitter 
+                    <a class="ml-2" target="_blank" href="https://twitter.com/MohamedSaid__">@moesaid</a>
+                </div>
+
+                <!-- charts -->
+                <div class="grid grid-cols-2 gap-6 h-full">
+                    <div class="card h-full">
+                        <div class="py-3 px-4 flex flex-row justify-between">
+                            <h1 class="h6">
+                                <span>4k</span>
+                                <p>Page Views</p>
+                            </h1>
+                            <div class="bg-teal-200 text-teal-700 border-teal-300 border w-10 h-10 rounded-full flex justify-center items-center">
+                                <i class="fad fa-eye"></i>
+                            </div>
+                        </div>
+                        <div id="analytics_1"></div>
+                    </div>
+
+                    <div class="card h-full">
+                        <div class="py-3 px-4 flex flex-row justify-between">
+                            <h1 class="h6">
+                                <span>2k</span>
+                                <p>Unique Users</p>
+                            </h1>
+                            <div class="bg-indigo-200 text-indigo-700 border-indigo-300 border w-10 h-10 rounded-full flex justify-center items-center">
+                                <i class="fad fa-users-crown"></i>
+                            </div>
+                        </div>
+                        <div id="analytics_2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- saleover -->
+        <div class="card mt-6 mx-16">
+        
+            <!-- body -->
+            <div class="card-body grid grid-cols-2 gap-6 lg:grid-cols-1">
+        
+                <div class="">
+                    <div id="sealsOverview"></div>
+                </div>
+            
+            </div>
+            <!-- end body -->
+        
+        </div>
+
+        <div class="grid grid-cols-5 p-5 bg-red-600 mx-16 mt-6">
+
+        </div>
+
+
+    </div>
+
+    <!-- JavaScript for charts -->
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', chartDone);
+
+    function chartDone() {
+        const options = (type, height, numbers, color) => {
+            return {
+                chart: {
+                    height: height,
+                    type: type,
+                    sparkline: { enabled: true },
+                    toolbar: { show: false },
+                },
+                grid: {
+                    show: false,
+                    padding: { top: 0, right: 0, bottom: 0, left: 0 }
+                },
+                dataLabels: { enabled: false },
+                legend: { show: false },
+                series: [{ name: "serie1", data: numbers }],
+                fill: { colors: [color] },
+                stroke: { colors: [color], width: 3 },
+                yaxis: { show: false },
+                xaxis: { show: false, labels: { show: false } },
+                tooltip: { enabled: false },
+            };
+        };
+
+        const analytics_1 = document.querySelector("#analytics_1");
+        const analytics_2 = document.querySelector("#analytics_2");
+
+        if (analytics_1 && analytics_2) {
+            const chart1 = new ApexCharts(analytics_1, options("area", '51px', numArr(10, 99), '#4fd1c5'));
+            const chart2 = new ApexCharts(analytics_2, options("area", '51px', numArr(10, 99), '#4c51bf'));
+            chart1.render();
+            chart2.render();
+        }
+    }
+
+    function numArr(min, max) {
+        return Array.from({ length: 10 }, () => Math.floor(Math.random() * (max - min + 1)) + min);
+    }
+    
+document.addEventListener('DOMContentLoaded', ChartBar);
+
+function ChartBar() {
+    var sealsOptions = {
+        chart: {
+            height: 350,
+            type: "line",  // The main chart type can remain "line" even if you have mixed types.
+            stacked: false
+        },
+        dataLabels: {
+            enabled: false
+        },
+        colors: ['#99C2A2', '#C5EDAC', '#66C7F4'],
+        series: [
+            {
+                name: 'Column A',
+                type: 'column',  // Correct type for this series.
+                data: [21.1, 23, 33.1, 34, 44.1, 44.9, 56.5, 58.5]
+            },
+            {
+                name: "Column B",
+                type: 'column',  // Correct type for this series.
+                data: [10, 19, 27, 26, 34, 35, 40, 38]
+            },
+            {
+                name: "Line C",
+                type: 'line',  // Correct type for this series (was incorrectly set as 'column').
+                data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6]
+            }
+        ],
+        stroke: {
+            width: [0, 0, 4]  // No stroke for columns, only for the line.
+        },
+        plotOptions: {
+            bar: {
+                columnWidth: "20%"  // Width for the columns.
+            }
+        },
+        xaxis: {
+            categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]
+        },
+        yaxis: [
+            {
+                seriesName: 'Column A',
+                axisTicks: {
+                    show: true
+                },
+                axisBorder: {
+                    show: true,
+                },
+                title: {
+                    text: "Columns"
+                }
+            },
+            {
+                seriesName: 'Column A',
+                show: false
+            }, 
+            {
+                opposite: true,
+                seriesName: 'Line C',
+                axisTicks: {
+                    show: true
+                },
+                axisBorder: {
+                    show: true,
+                },
+                title: {
+                    text: "Line"
+                }
+            }
+        ],
+        tooltip: {
+            shared: false,
+            intersect: true,
+            x: {
+                show: false
+            }
+        },
+        legend: {
+            horizontalAlign: "left",
+            offsetX: 40
+        }
+    };
+
+    // Select the chart container
+    var sealsOverview = document.getElementById('sealsOverview');
+    
+    // Create a new ApexChart instance and pass the correct 'sealsOptions' object
+    var sealsOverviewChart = new ApexCharts(sealsOverview, sealsOptions);
+    
+    // Render the chart
+    sealsOverviewChart.render();
+}
+
+</script>
+</html>

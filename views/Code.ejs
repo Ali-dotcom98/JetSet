@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Code Editor</title>
+</head>
+<body>
+    <h2>Online Code Editor</h2>
+    <textarea id="code-input" rows="10" cols="50">
+// Example: Calculate factorial
+function factorial(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+const result = factorial(5);
+console.log("Factorial of 5 is:", result);
+    </textarea>
+    <br>
+    <button onclick="runCode()">Run Code</button>
+    <h3>Output:</h3>
+    <pre id="output"></pre>
+
+    <script>
+        function runCode() {
+            const codeInput = document.getElementById("code-input").value;
+            const outputElement = document.getElementById("output");
+            outputElement.textContent = ''; // Clear previous output
+
+            try {
+                // Capture console.log output
+                const originalConsoleLog = console.log;
+                console.log(originalConsoleLog)
+                console.log = function(...args) {
+                    outputElement.textContent += args.join(' ') + '\n';
+                };
+
+                // Run the code
+                eval(codeInput);
+
+                // Restore console.log
+                console.log = originalConsoleLog;
+            } catch (error) {
+                outputElement.textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

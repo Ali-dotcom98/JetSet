@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/output.css">
+</head>
+<body class="overflow-x-auto">
+    <div class="grid grid-cols-3 p-4 mx-3 items-center">
+        <div class="space-y-3 col-span-2 font-Popins">
+            <h1 class="text-3xl font-medium ">Movies</h1>
+            <p class="text-lg font-semibold">Book the ticket of your favorite movie</p>
+        </div>
+        <div class="col-span-1">
+            <form action="/Home/Search" method="post" class="flex flex-col">
+                <div class="relative">
+                    <div class="flex flex-row w-full">
+                        <input  type="text" name="MovieName" id="movie" class="w-full  border border-gray-500 p-2 rounded-md border-r-0 rounded-r-none" autocomplete="off">
+                        <button type="submit" class="bg-gradient-to-r from-cyan-400 to-sky-500 p-2 text-white capitalize rounded-md border-l-0 rounded-l-none border border-gray-500">Search</button>
+                    </div>
+                    <div  id="suggestions" class="autocomplete-suggestions absolute top-12 z-10 bg-white opacity-90 w-full rounded-md"></div>
+                
+                </div>
+            </form>
+            
+        </div>
+        
+    </div>
+    <% if (data != null && data.length > 0) { %> 
+        
+        <div class="grid grid-cols-4 gap-5 mt-8 px-8 rounded-md ">
+            <% for (let index = 0; index < data.length; index++) { %>
+                <a href="/Home/DisplayMovie/<%- data[index].id%>" >
+                    <div class>
+                        <div class=" rounded-md overflow-hidden shadow-lg flex flex-col items-center justify-between  border border-gray-300 shadow-gray-200s h-[420px] 
+                    hover:scale-105 hover:transition-all hover:ease-in-out hover:duration-200"> 
+                        <!-- Set fixed height for the card -->
+                        <img class="w-full h-80" src="<%= data[index].posterImage %>" alt="<%= data[index].title %>">
+                        
+                        <% if ((data[index].title.trim()).length<=30) { %>
+                            <div class="px-1 pt-2 py-3 mb-5 capitalize text-center ">
+                                <div class="font-semibold text-lg text-center "><%= data[index].title %></div>
+                            </div>
+
+                        <% } else { %>
+                            <div class="px-1 pt-2 py-3  capitalize text-center ">
+                                <div class="font-semibold text-lg text-center "><%= data[index].title %></div>
+                            </div>
+                            <% } %>
+                        
+                        </div>
+                    </div>
+                    
+                </a>                   
+            <% } %>
+        </div>
+        
+        
+        
+        
+    <% } else { %>
+        <div class="mt-20">
+            <%- include("./Partial/NotFound.ejs") %>
+        </div>
+    <% } %>
+    
+    
+
+    
+
+</body>
+<script>
+    document.getElementById("movie").addEventListener("input", () => {
+        const data = document.getElementById("movie");
+        console.log(data.value);
+        const text = data.value;
+
+        fetch(`/Suggestion/${text}`)
+            .then(response => {
+                return response.json(); // Return the JSON data
+            })
+            .then(data => {
+                console.log(data);
+                displaySuggestions(data, text)
+            })
+            .catch(error => {
+                console.error('Error fetching suggestions:', error);
+                displaySuggestions(null, text)
+            });
+    });
+
+    function displaySuggestions(suggestions, text) {
+    const suggestionsContainer = document.getElementById('suggestions');
+    suggestionsContainer.innerHTML = ''; // Clear previous suggestions
+    console.log("Suggestion", suggestions);
+
+    if (suggestions.length > 0 && suggestions != null) {
+        suggestions.forEach(suggestion => {
+            const suggestionItem = document.createElement('div');
+            suggestionItem.classList.add('p-2', 'cursor-pointer', 'hover:bg-gray-200');
+
+            const MovieName = suggestion.title;
+            const lengthSug = text.length;
+
+    
+            const highlightPart = MovieName.slice(0, lengthSug);
+            const remaining = MovieName.slice(lengthSug);
+
+            const highlight = document.createElement('span');
+            highlight.classList.add('font-bold');
+            highlight.textContent = highlightPart;
+
+            const remainingSpan = document.createElement('span');
+            remainingSpan.textContent = remaining;
+
+            // Append the highlighted and remaining parts to the suggestion item
+            suggestionItem.appendChild(highlight);
+            suggestionItem.appendChild(remainingSpan);
+
+            suggestionItem.addEventListener('click', function() {
+                console.log(suggestion.title);
+                document.getElementById('movie').value = suggestion.title; 
+                suggestionsContainer.classList.add('hidden'); 
+            });
+
+            suggestionsContainer.appendChild(suggestionItem); 
+        });
+
+        suggestionsContainer.classList.remove('hidden'); 
+    } else {
+        suggestionsContainer.classList.add('hidden'); 
+    }
+}
+
+
+</script>
+
+</html>

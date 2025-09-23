@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/output.css">
+</head>
+<body class="font-Popins">
+    <div class="mx-3 mt-4 flex flex-row items-center justify-end">
+        <div>
+            <a href="/home" class="font-Popins">
+                <div class="font-Popins border border-gray-300 p-2 rounded-xl hover:bg-gray-900 hover:text-white transition ease-in duration-200 flex flex-row gap-2 w-fit font-semibold uppercase">
+                    <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                    <h1>Back</h1>
+                </div>
+            </a>
+        </div>
+    </div>
+    <form action="/Home/GetTicket/<%- data.id %>" method="post">
+        <div class="grid grid-cols-4 gap-4 p-4">
+            <div class="col-span-1 shadow-xl shadow-zinc-700 rounded-md">
+                <img src="<%- data.posterImage %>" alt="" class="rounded-md h-full">
+            </div>
+            <div class="col-span-3">
+                <div class="flex items-center  justify-center">
+                    <div class="text-3xl font-semibold text-zinc-600 capitalize">
+                        Movie Name <%- data.title %>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3  ">
+                    <div class="col-span-2 p-3 text-xl justify-center mt-3">
+                        <%- Description %>
+                    </div>
+                    <div class="col-span-1 justify-between h-72">
+                        <div class="pt-3 border border-blue-500 rounded-md  flex flex-col gap-3 justify-center items-centers mt-20 p-1">
+                            <div href="" class="bg-gray-200 text-zinc-700 font-semibold rounded-md p-3">
+                                <div class="">
+                                    <h1><%- data.genre %></h1>
+                                </div>
+                            </div>
+                            <div href="" class="bg-gray-200 text-zinc-700 font-semibold rounded-md p-3">
+                                <div class="">
+                                    <h1>Duration: <span><%- data.Duration %> Min</span></h1>
+                                </div>
+                            </div>
+                            <div href="" class="bg-gray-200 text-zinc-700 font-semibold rounded-md p-3">
+                                <div class="">
+                                    <h1>Price: <span><%- data.TicketPrice %> Min</span></span></h1>
+                                </div>
+                            </div>
+                            <div href="" class="bg-gray-200 text-zinc-700 font-semibold rounded-md p-3">
+                                <div class="">
+                                    <h1>Avalible Seats: <span><%- AvalibleSeats %></span></span></h1>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div>
+                        <button class="animate-bounce bg-red-500 p-3 text-white font-semibold capitalize rounded-md hover:bg-white hover:text-red-500 hover:ring ring-red-500 ease-in duration-200">Get Ticket</button>
+                    </div>
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+
+        
+    </form>
+</body>
+<script>
+    const toast = document.getElementById("Tost")
+    setTimeout(()=>{
+        toast.remove()
+    },3000)
+</script>
+</html>

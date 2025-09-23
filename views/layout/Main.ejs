@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JetSet Movies</title>
+    <link rel="icon" type="image/png" href="/uploads/Movies/favcion.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="font-Poppins overflow-x-hidden">
+
+    
+        <%- include("../Partial/Header") %>
+    
+    
+    <div class="grid grid-cols-5 w-full min-h-screen   ">
+        <div class="col-span-1 ">
+            <div class="fixed border-r border-gray-300 h-screen "> 
+                <%- include("../Partial/Slider") %>
+            </div>
+        </div>
+        <div class="col-span-4"> <!-- Added ml-64 to offset for the fixed sidebar -->
+            <%- body %>
+            <div class="mt-5 mr-6">
+                <%- include("../Partial/Footer") %>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Movie Collection</title>
+    <!-- <link rel="stylesheet" href="src/output.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="mx-3 mt-4 flex flex-row items-center justify-between mb-5">
+        <div class="text-2xl text-gray-900">Update <%- data.title %></div>
+        <div>
+            <a href="/home" class="font-Popins">
+                <div class="font-Popins border border-gray-300 p-2 rounded-xl hover:bg-gray-900 hover:text-white transition ease-in duration-200 flex flex-row gap-2 w-fit font-semibold uppercase">
+                    <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                    <h1>Back</h1>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <form method="post" action="/Admin/UpdateMovie/<%- data._id %>" enctype="multipart/form-data" onsubmit="return validation()">
+        <div class="px-3 py-5">
+            <div class="flex flex-col gap-3 items-start">
+                <label for="Thumbnail" class="font-Popins font-bold">Thumbnail</label>
+                <input class="border border-gray-300 rounded-md col-span-2 w-full p-1" type="file" name="Thumbnail" id="Thumbnail" placeholder="Thumbnail" value="<%- data.posterImage %>">
+                <p></p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-4 p-3 gap-4 mt-4">
+            <div class="col-span-2 flex flex-col gap-3">
+                <div class="flex flex-col gap-3 items-start">
+                    <label for="Title" class="font-Popins font-bold">Title</label>
+                    <input class="border border-gray-300 rounded-md col-span-2 w-full p-1" type="text" name="Title" id="Title" placeholder="Movie Title" value="<%- data.title %>">
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="col-span-2 flex flex-col gap-3">
+                <div class="flex flex-col gap-3 items-start">
+                    <label for="Genre" class="font-Popins font-bold">Genre</label>
+                    <select name="Genre" id="Genre" class="border border-gray-300 rounded-md col-span-2 w-full p-1">
+                        <option value="<%- data.genre %>" disabled selected><%- data.genre %></option>
+                        <option value="Action">Action</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Thriller">Thriller</option>
+                    </select>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-4 p-3 gap-4">
+            <div class="col-span-2 flex flex-col gap-3">
+                <label for="Duration" class="font-Popins font-bold">Duration</label>
+                <input class="border border-gray-300 rounded-md col-span-2 w-full p-1" type="text" name="Duration" id="Duration" placeholder="Duration in minutes" value="<%- data.showtimes[0].Duration %>">
+                <p></p>
+            </div>
+
+            <div class="col-span-2 flex flex-col gap-3">
+                <label for="TotalSeats" class="font-Popins font-bold">Total Seats</label>
+                <input class="border border-gray-300 rounded-md col-span-2 w-full p-1" type="text" name="TotalSeats" id="TotalSeats" placeholder="Total Seats" value="<%- data.showtimes[0].totalSeats %>">
+                <p></p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-4 p-3 gap-4">
+            <div class="col-span-2 flex flex-col gap-3">
+                <label for="TicketPrice" class="font-Popins font-bold">Ticket Price</label>
+                <input class="border border-gray-300 rounded-md col-span-2 w-full p-1" type="text" name="TicketPrice" id="TicketPrice" placeholder="Ticket Price"  value="<%- data.showtimes[0].TicketPrice %>">
+                <p></p>
+            </div>
+            <div class="col-span-2 flex flex-col gap-3">
+                <label for="TicketPrice" class="font-Popins font-bold">Description</label>
+                <textarea name="Description" id="" class="w-full h-64 border border-gray-300 rounded-md p-1 resize-none" placeholder="Description..... " name="Description"><%- Description %></textarea>
+                <p></p>
+            </div>
+        </div>
+        <div class="p-4">
+            <button class="btn1 btn-white">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        function validation() {
+            let valid = true;
+            const fields = ["Title", "Duration", "TotalSeats", "TicketPrice", "Thumbnail", "Genre"];
+            
+            fields.forEach(id => {
+                const field = document.getElementById(id);
+                if (field.value === "") {
+                    const nextSibling = field.nextElementSibling;
+                    nextSibling.innerHTML = `${id} is required`;
+                    nextSibling.style.color = "red";
+                    field.style.border = "2px solid red";
+                    valid = false;
+                } else {
+                    const nextSibling = field.nextElementSibling;
+                    nextSibling.style.display = "none";
+                    field.style.border = "2px solid green";
+                }
+            });
+
+            return valid;
+        }
+    </script>
+</body>
+</html>

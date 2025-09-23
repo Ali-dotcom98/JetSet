@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="">
+    <header class="sticky top-0 w-full shadow-md border-b border-gray-300 z-50 bg-white">
+        <div class="bg-gradient-to-r from-cyan-400 to-sky-500 px-4 py-2 text-white dark:text-white font-bold tracking-widest">
+            <div>
+                Subscribe
+            </div>
+
+        </div>
+        <div class="flex flex-row items-center justify-between px-4 py-2">
+            <div class="flex flex-row gap-4 text-3xl font-medium items-center">
+                <svg class="size-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+                </svg>
+                <div class="capitalize">JetSet Movies</div>
+            </div>
+            <div class="flex flex-row gap-8 items-center text-gray-300 dark:text-gray-500 font-medium">
+                <div class="relative border border-green-50 px-6 py-2 ">
+                    Help
+                    <span class=" absolute flex h-3 w-3 -top-1 -right-1">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+                    </span>
+                </div>
+                
+                <Button class="cursor-pointer" onclick="loadHistory()" id="History">
+                    <div>History</div>  
+                </Button>
+                <div><a href="">Login</a></div>
+                <a href="/Site/Singup" class=" bg-gradient-to-r from-cyan-400 to-sky-500 px-4 py-3 text-white rounded-md">
+                    Sign up</a>
+            </div>
+        </div>
+    </header>
+    <body class="overflow-x-hidden ">
+        <div class="relative z-30 flex justify-end items-start bg-red-800 opacity-0 translate-x-full transition-all duration-1000 ease-in" id="His">
+            <div class="w-1/2 h-screen bg-gradient-to-r from-cyan-400 to-sky-500 fixed z-50 p-[2px]">
+                <div class="bg-white w-full h-full overflow-y-scroll">
+                    <div id="historyContent" class="p-4">
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</body>
+<script>
+    document.getElementById("History").addEventListener('click', () => {
+        const historyPanel = document.getElementById("His");
+        if (historyPanel.classList.contains("opacity-0")) {
+            historyPanel.classList.remove("opacity-0", "translate-x-full");
+            historyPanel.classList.add("opacity-100", "translate-x-0");
+        } else {
+            historyPanel.classList.add("opacity-0", "translate-x-full");
+            historyPanel.classList.remove("opacity-100", "translate-x-0");
+        }
+    });
+
+    function loadHistory() {
+    fetch('/Site/History')
+        .then(response => response.json())
+        .then(data => {
+            // Check if data is an array
+
+            const historyContent = document.getElementById("historyContent");
+            historyContent.innerHTML = ''; // Clear existing content
+
+            // Loop through each history item
+            Array.from(data).forEach(item => {
+                const historyItem = document.createElement('div');
+                historyItem.classList.add('flex', 'flex-row', 'items-start', 'gap-6', 'border-b', 'border-gray-300', 'pb-2','pt-2');
+
+                const imageContainer = document.createElement('div');
+                imageContainer.classList.add('w-1/6');
+                const img = document.createElement('img');
+                img.classList.add('w-full', 'h-auto', 'object-cover', 'rounded-md');
+                img.src = item.Img;
+                img.alt = "Movie Poster";
+                imageContainer.appendChild(img);
+
+                const contentContainer = document.createElement('div');
+                contentContainer.classList.add('flex', 'flex-col', 'justify-evenly', 'mt-8', 'w-3/4', 'mb-2');
+                const title = document.createElement('div');
+                title.classList.add('text-xl', 'font-semibold', 'mb-2');
+                title.textContent = item.Movie;
+
+                const infoContainer = document.createElement('div');
+                infoContainer.classList.add('flex', 'justify-between', 'items-center');
+                const cost = document.createElement('div');
+                cost.classList.add('text-lg', 'font-medium', 'text-gray-700');
+                cost.textContent = item.Cost;
+
+                const time = document.createElement('div');
+                time.classList.add('text-sm', 'text-gray-500');
+                const date = new Date(item.createdAt);
+                time.textContent = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
+                infoContainer.appendChild(cost);
+                infoContainer.appendChild(time);
+                contentContainer.appendChild(title);
+                contentContainer.appendChild(infoContainer);
+
+                historyItem.appendChild(imageContainer);
+                historyItem.appendChild(contentContainer);
+                historyContent.appendChild(historyItem);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching history:', error);
+        });
+}
+
+
+
+</script>
+</html>

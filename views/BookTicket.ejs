@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/output.css">
+</head>
+<body>
+    
+    <div class="grid grid-cols-6 font-Popins ">
+        <div class="col-span-4 ">
+            <div class="ticket-box-table flex flex-col gap-8  items-center justify-center mt-10">
+                <div class="w-3/4 bg-red-500 text-white p-2 font-Popins font-semibold border-2 border-dotted border-white">
+                    <div class="flex items-center justify-center">
+                        Screen
+                    </div>
+                </div>
+                <table class="ticket-table-seat">
+                    <tr class="flex flex-row gap-5">
+                        <td class="Row1 RowStyle" >1</td>
+                        <td class="Row1 RowStyle ">2</td>
+                        <td class="Row1 RowStyle ">3</td>
+                        <td class="Row1 RowStyle ">4</td>
+                        <td class="Row1 RowStyle ">5</td>
+                        <td class="Row1 RowStyle ">6</td>
+                        <td class="Row1 RowStyle">7</td>
+                    </tr>
+                    <tr class="flex flex-row gap-5 mt-5">
+                        <td class="Row1 RowStyle" >8</td>
+                        <td class="Row1 RowStyle ">9</td>
+                        <td class="Row1 RowStyle ">10</td>
+                        <td class="Row1 RowStyle ">11</td>
+                        <td class="Row1 RowStyle ">12</td>
+                        <td class="Row1 RowStyle ">13</td>
+                        <td class="Row1 RowStyle">14</td>
+                    </tr>
+                    <tr class="flex flex-row gap-5 mt-5">
+                        <td class="Row1 RowStyle" >15</td>
+                        <td class="Row1 RowStyle ">16</td>
+                        <td class="Row1 RowStyle ">17</td>
+                        <td class="Row1 RowStyle ">18</td>
+                        <td class="Row1 RowStyle ">19</td>
+                        <td class="Row1 RowStyle ">20</td>
+                        <td class="Row1 RowStyle ">21</td>
+                    </tr>
+                    <tr class="flex flex-row gap-5 mt-5">
+                        <td class="Row1 RowStyle" >22</td>
+                        <td class="Row1 RowStyle ">23</td>
+                        <td class="Row1 RowStyle ">24</td>
+                        <td class="Row1 RowStyle ">25</td>
+                        <td class="Row1 RowStyle ">26</td>
+                        <td class="Row1 RowStyle ">27</td>
+                        <td class="Row1 RowStyle">28</td>
+                    </tr>
+                    <tr class="flex flex-row gap-5 mt-5">
+                        <td class="Row1 RowStyle" >29</td>
+                        <td class="Row1 RowStyle ">30</td>
+                        <td class="Row1 RowStyle ">31</td>
+                        <td class="Row1 RowStyle ">32</td>
+                        <td class="Row1 RowStyle ">33</td>
+                        <td class="Row1 RowStyle ">34</td>
+                        <td class="Row1 RowStyle">35</td>
+                    </tr>
+                </table>
+            </div> 
+            <div class="mt-5 flex flex-row items-center justify-between mx-32">
+                <div class="bg-red-500 p-4 text-white rounded-md hover:bg-white hover:text-red-500 font-medium ring ring-red-500" >
+                    <button onclick="BookSeats()" >Done</button>
+                </div> 
+                <div class="flex flex-row gap-3 bg-red-500 p-4 text-white rounded-md">
+                    Price : <span id="Price" name="000">000</span>
+                </div>
+            </div>  
+        </div>
+        <div class="col-span-2 border border-gray-200 space-y-5" >
+
+                <a href="/Home/DisplayMovie/<%- data._id %>" class="w-3/4 ml-14 mt-4 flex flex-row gap-3 bg-gradient-to-r from-cyan-400 to-sky-500 px-4 py-3 text-white rounded-mdbg-gradient-to-r from-cyan-400 to-sky-500 px-4 py-3 text-white rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                    </svg>
+                    Back
+                </a>
+            
+            <div class=" flex flex-col items-center justify-center ml-5 rounded-md">
+                <img class="w-small h-96 rounded-md" src="<%- data.posterImage %>" alt="">
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    
+    var constent = <%- JSON.stringify(data.showtimes[0].NumberSeat) %>;
+
+    let cleanedArr = constent.map(item => item.replace(/\\/g, '').replace(/"/g, ''));
+
+    console.log(constent);
+
+    
+    
+
+    var TicketPrice = "<%- data.TicketPrice %>"
+    var id = "<%- data._id %>"
+    var Sum = 0
+    var TicketPrice = parseInt(TicketPrice);
+    console.log(TicketPrice)
+    var Price = document.getElementById("Price");
+    var BookArray = cleanedArr
+    console.log(BookArray)
+    
+    const Row1 = document.getElementsByClassName("Row1")
+    Array.from(Row1).forEach(element => {
+    var IsExist = BookArray.some(check => check == element.textContent);
+    if (IsExist) {
+        Object.assign(element.style, {
+            background: "white",
+            color: "red",
+            cursor: "not-allowed"
+        });
+    }
+    });
+    if(BookArray != null)
+    {
+        Array.from(Row1).forEach(element => {
+        element.addEventListener("click",()=>{
+            Object.assign(element.style , {
+                background : "white",
+                color : "red"
+            })
+            BookArray.push(element.textContent)
+            Sum = Sum + TicketPrice;
+            Price.innerHTML =Sum
+            ActualSum = Price.innerHTML
+            console.log(element.textContent)
+            var x = element.textContent
+            console.log(typeof x);
+            
+        })
+    });
+    }
+
+
+    
+    
+    function BookSeats()
+    {
+        
+        console.log(ActualSum)
+        const Payload ={
+        Cost : ActualSum,
+        TicketPrice : "<%- data.TicketPrice %>"
+        }
+        const encodedPayload = encodeURIComponent(JSON.stringify(Payload));
+        window.location.href = `/Home/AddTicket/"${BookArray}"/<%-data._id%>/${encodedPayload}`
+    }
+    
+</script>
+</html>

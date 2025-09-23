@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="font-Poppins overflow-x-hidden">
+    <!-- header -->
+        <%- include("../Partial/Header") %>
+    
+
+    <div class="grid grid-cols-5 w-full min-h-screen gap-0">
+        <div class="col-span-1 w-full">
+            <div class="fixed border-r border-gray-300 h-screen "> 
+                <%- include("../Partial/SliderAdmin") %>
+            </div>
+        </div>
+        <div class="col-span-4 mr-10">
+            <%- body %>
+            
+        </div>
+    </div>
+</body>
+</html>
